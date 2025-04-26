@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Meus Concursos{% endblock %}
+{% block content %}
+    <h2>Concursos Cadastrados</h2>
+    <ul>
+    {% for concurso in concursos %}
+        <li>
+            <strong>{{ concurso.nome }}</strong> - Banca: {{ concurso.banca }} - Prova: {{ concurso.data_prova.strftime('%d/%m/%Y') }}
+            [<a href="{{ url_for('visualizar_cronograma', concurso_id=concurso.id) }}">Ver Cronograma</a>]
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
