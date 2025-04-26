@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Cronograma de Estudos{% endblock %}
+{% block content %}
+    <h2>Cronograma para {{ concurso.nome }}</h2>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Disciplina</th>
+            <th>Tópico</th>
+            <th>Tempo Estimado (min)</th>
+        </tr>
+        {% for item in cronograma %}
+        <tr>
+            <td>{{ item.data }}</td>
+            <td>{{ item.disciplina }}</td>
+            <td>{{ item.topico }}</td>
+            <td>{{ item.tempo_estimado }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
