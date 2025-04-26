@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Sessões de Estudo{% endblock %}
+{% block content %}
+    <h2>Sessões de Estudo para {{ disciplina.nome }} - {{ concurso.nome }}</h2>
+
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Tópico</th>
+            <th>Tempo Estudado (min)</th>
+            <th>Nível de Compreensão</th>
+        </tr>
+        {% for sessao in sessoes %}
+        <tr>
+            <td>{{ sessao.data }}</td>
+            <td>{{ sessao.topico }}</td>
+            <td>{{ sessao.tempo_estudado }}</td>
+            <td>{{ sessao.compreensao }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
