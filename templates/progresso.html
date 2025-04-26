@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Progresso e Estatísticas{% endblock %}
+{% block content %}
+    <h2>Progresso de Estudos para {{ concurso.nome }}</h2>
+    
+    <h3>Resumo Geral</h3>
+    <p><strong>Progresso Total:</strong> {{ progresso.progresso_percentual }}%</p>
+    <p><strong>Tempo Total Estudado:</strong> {{ progresso.tempo_total_estudado }} minutos</p>
+
+    <h3>Disciplinas mais e menos estudadas</h3>
+    <ul>
+        {% for disciplina in disciplinas %}
+        <li>
+            <strong>{{ disciplina.nome }}</strong> - Estudado: {{ disciplina.tempo_estudado }} minutos
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Sugestões de Revisão</h3>
+    <ul>
+        {% for revisao in revisoes %}
+        <li>
+            <strong>{{ revisao.topico }}</strong> (Disciplina: {{ revisao.disciplina }}) - Revisar em: {{ revisao.data_revisao }}
+        </li>
+        {% endfor %}
+    </ul>
+    
+{% endblock %}
