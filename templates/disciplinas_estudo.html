@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Detalhes das Disciplinas{% endblock %}
+{% block content %}
+    <h2>Detalhes de Estudo - {{ concurso.nome }}</h2>
+
+    <h3>Disciplinas</h3>
+    <ul>
+        {% for disciplina in disciplinas %}
+            <li>
+                <strong>{{ disciplina.nome }}</strong> - Estudado: {{ disciplina.tempo_estudado }} minutos
+                [<a href="{{ url_for('ver_sessoes', disciplina_id=disciplina.id) }}">Ver Sessões</a>]
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
