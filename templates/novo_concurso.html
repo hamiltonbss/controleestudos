@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Novo Concurso{% endblock %}
+{% block content %}
+    <h2>Cadastrar Novo Concurso</h2>
+    <form method="POST">
+        <label>Nome do Concurso:</label>
+        <input type="text" name="nome" required>
+
+        <label>Banca Organizadora:</label>
+        <input type="text" name="banca" required>
+
+        <label>Data da Prova:</label>
+        <input type="date" name="data_prova" required>
+
+        <h3>Disciplinas e Tópicos</h3>
+        <div id="disciplinas-container">
+            <!-- JS vai adicionar blocos aqui -->
+        </div>
+        <button type="button" onclick="adicionarDisciplina()">Adicionar Disciplina</button>
+
+        <br><br>
+        <button type="submit">Salvar</button>
+    </form>
+
+    <script>
+        function adicionarDisciplina() {
+            const container = document.getElementById('disciplinas-container');
+            const index = container.children.length;
+            const html = `
+                <div class="disciplina">
+                    <label>Nome da Disciplina:</label>
+                    <input type="text" name="disciplinas[${index}][nome]" required>
+
+                    <label>Prioridade:</label>
+                    <select name="disciplinas[${index}][prioridade]">
+                        <option value="alta">Alta</option>
+                        <option value="media">Média</option>
+                        <option value="baixa">Baixa</option>
+                    </select>
+
+                    <label>Tópicos (separados por vírgula):</label>
+                    <input type="text" name="disciplinas[${index}][topicos]" placeholder="ex: tópico1, tópico2">
+                </div><hr>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+        }
+    </script>
+{% endblock %}
